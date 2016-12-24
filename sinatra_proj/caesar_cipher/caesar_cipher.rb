@@ -8,6 +8,4 @@ def caesar_cipher (string, number)
 		caesar_string << i[-1] 
 	end
 	return caesar_string
-
-
 end
