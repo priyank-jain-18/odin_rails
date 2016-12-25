@@ -7,10 +7,10 @@ get '/' do
 	erb:index
 end
 
-get '/caesar_cipher.html' do
+get '/caesar_cipher.html' do	 
 	erb:caesar_cipher
 end
 
-get '/index.html' do
-	erb:index
-end
+
+
+
