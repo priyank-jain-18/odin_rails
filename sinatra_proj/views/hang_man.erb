@@ -6,16 +6,16 @@
     <div id = "main_div_h"> 
 
     <h1>HANGMAN</h1>
-    <h2> _ _ _ _ _ _ </h2>    
+    <h2><%= secret_code %></h2>    
     <form method="post" action="/runHangman">
         LETTER: <input type="text" id="str" name = "str" >
         <button type="submit" id="apply">GUESS!</button>
     </form>
 
     <div class = "stats">
-      <p id ="stats">Guess: 0 </p>   
-      <p id ="stats">Turns: 0 </p>
-      <p id ="stats">Missed: 0</p>
+      <p id ="stats">Guess: <%= guess%></p>   
+      <p id ="stats">Turns: <%= turns%></p>
+      <p id ="stats">Missed: <%= missed%></p>
     </div>
 
     <div id = "output_hangman"> 

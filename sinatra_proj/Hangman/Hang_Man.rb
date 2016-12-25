@@ -7,7 +7,6 @@ class Hangman
 		@correct = 0
 		@turns = 0
 
-
 		@random_word = nil
 		@coded_word = nil
 		@missed_words = Array.new
@@ -89,6 +88,3 @@ class Hangman
 
 
 end
-
-
-

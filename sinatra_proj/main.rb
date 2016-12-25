@@ -1,5 +1,5 @@
 require_relative 'caesar_cipher/caesar_cipher.rb'
-require_relative 'Hangman/Hang_Man.rb'
+require_relative 'Hangman/Hangman_engine.rb'
 require 'sinatra'
 require 'sinatra/reloader'
 
@@ -14,11 +14,17 @@ get '/caesar_cipher.html' do
 end
 
 get '/hang_man.html' do
+	secret_code = @@game.coded_word
+	turns = @@game.turns
+	missed = @@game.missed_words if @@game.misses == []
+	
+	guess = @@game.misses
 	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
-	erb:hang_man, locals: {output: output}
+	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess}
 end
 
 post '/runHangman' do
+
 
 end
 
