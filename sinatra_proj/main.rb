@@ -1,4 +1,5 @@
 require_relative 'caesar_cipher/caesar_cipher.rb'
+require_relative 'Hangman/Hang_Man.rb'
 require 'sinatra'
 require 'sinatra/reloader'
 
@@ -13,8 +14,11 @@ get '/caesar_cipher.html' do
 end
 
 get '/hang_man.html' do
-	erb:hang_man
+	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
+	erb:hang_man, locals: {output: output}
 end
+
+
 
 post '/runCaesar' do 	
     translation = caesar_cipher(params["str"].to_s, params["vals"].to_i)

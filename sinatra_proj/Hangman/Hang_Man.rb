@@ -17,34 +17,34 @@ class Hangman
 	end
 
 	def output_man
-        puts "		 ___________.._______"
-        puts "| .__________))______|"
-        puts "| | / /      #{@misses >= 1 ? '||' : ''}"
-        puts "| |/ /       #{@misses >= 1 ? '||' : ''}"
-        puts "| | /        #{@misses >= 1 ? '||.-\'\'.' : ''}"
-        puts "| |/         #{@misses >= 1 ? '|/  _  \\' : ''}"
-        puts "| |          #{@misses >= 1 ? '||  `/,|' : ''}"
-        puts "| |          #{@misses >= 1 ? '(\\`_.\'' : ''}"
-        puts "| |         #{@misses >= 1 ? '.-`--\'.' : ''}"
-        puts "| |        #{@misses >= 3 ? '/Y': '  '} #{@misses >= 2 ? '. .' : ''} #{@misses >= 4 ? 'Y\\' : ''} "
-        puts "| |       #{@misses >= 3 ? '//' : '  '} #{@misses >= 2 ? '|   |' : ''} #{@misses >= 4 ? '\\\\' : ''}"
-        puts "| |      #{@misses >= 3 ? '//' : '  '}  #{@misses >= 2 ? '| . |' : ''}  #{@misses >= 4 ? '\\\\' : ''}" 
-        puts "| |     #{@misses >= 3 ? '\')' : '  '}   #{@misses >= 2 ? '|   |' : ''}   #{@misses >= 4 ? '(`' : ''} "
-        puts "| |          #{@misses >= 5? '||\'' : ''}#{@misses >= 6 ? '||' : ''}"
-        puts "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''}"
-        puts "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''}"
-        puts "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''}"
-        puts "| |         #{@misses >= 5 ? '/ |' : ''} #{@misses >= 6 ? '| \\' : ''}"
-        puts "\"\"\"\"\"\"\"\"\"\"|_#{@misses >= 5 ? '`-\'' : '   '} #{@misses >= 6 ? '`-\' ' : '    '} |\"\"\"|"
-        puts "|\"|\"\"\"\"\"\"\"\\ \\        '\"|\"|"
-        puts "| |        \\ \\         | |"
-        puts ": :         \\ \\        : :  "
-        puts ". .          `'        . ."
 
-        puts "\nGuess:      #{@coded_word}"
-        puts "\n\nTurns : #{@turns}"
-        print "Missed: " unless @missed_words.empty?
-        @missed_words.each {|letter| print letter.upcase + ', ' } unless @missed_words.empty?
+        man = "		 ___________.._______ <br>" +
+        "| .__________))______| <br>" +
+        "| | / /      #{@misses >= 1 ? '||' : ''} <br>" +
+        "| |/ /       #{@misses >= 1 ? '||' : ''} <br>" +
+        "| | /        #{@misses >= 1 ? '||.-\'\'.' : ''} <br>" +
+        "| |/         #{@misses >= 1 ? '|/  _  \\' : ''} <br>" +
+        "| |          #{@misses >= 1 ? '||  `/,|' : ''} <br>" +
+        "| |          #{@misses >= 1 ? '(\\`_.\'' : ''} <br>" +
+        "| |         #{@misses >= 1 ? '.-`--\'.' : ''} <br>" +
+        "| |        #{@misses >= 3 ? '/Y': '  '} #{@misses >= 2 ? '. .' : ''} #{@misses >= 4 ? 'Y\\' : ''}  <br>" +
+        "| |       #{@misses >= 3 ? '//' : '  '} #{@misses >= 2 ? '|   |' : ''} #{@misses >= 4 ? '\\\\' : ''} <br>" +
+        "| |      #{@misses >= 3 ? '//' : '  '}  #{@misses >= 2 ? '| . |' : ''}  #{@misses >= 4 ? '\\\\' : ''} <br>"  +
+        "| |     #{@misses >= 3 ? '\')' : '  '}   #{@misses >= 2 ? '|   |' : ''}   #{@misses >= 4 ? '(`' : ''}  <br>" +
+        "| |          #{@misses >= 5? '||\'' : ''}#{@misses >= 6 ? '||' : ''} <br>" +
+        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
+        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
+        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
+        "| |         #{@misses >= 5 ? '/ |' : ''} #{@misses >= 6 ? '| \\' : ''} <br>" +
+        "\"\"\"\"\"\"\"\"\"\"|_#{@misses >= 5 ? '`-\'' : '   '} #{@misses >= 6 ? '`-\' ' : '    '} |\"\"\"| <br>" +
+        "|\"|\"\"\"\"\"\"\"\\ \\        '\"|\"| <br>" +
+        "| |        \\ \\         | | <br>" +
+        ": :         \\ \\        : :   <br>" +
+        ". .          `'        . . <br>"       
+       # print "Missed: " unless @missed_words.empty?
+        #@missed_words.each {|letter| print letter.upcase + ', ' } unless @missed_words.empty?
+
+        return man
     end
 
     def generate_hangman_word
@@ -63,7 +63,7 @@ class Hangman
     def input_letter
     	inp_char = 'gg'
     	while inp_char.length != 1 && inp_char.is_a?(String) && inp_char =~ /[A-Za-z]/
-    	    print "\nEnter a character: "
+    	    print "<br>Enter a character: "
             inp_char = gets.chomp
             save_game if inp_char == 'save'
             load_game if inp_char == 'load'
@@ -109,8 +109,8 @@ class Hangman
     		check_if_part(letter)
     		output_man
     	end
-    	puts "\nYOU LOSE, the correct word is #{@random_word}" if lose?
-    	puts "\nYOU WIN CONGRATS" if win?
+    	puts "<br>YOU LOSE, the correct word is #{@random_word}" if lose?
+    	puts "<br>YOU WIN CONGRATS" if win?
     end
 
 
@@ -118,7 +118,7 @@ end
 
 
 game = Hangman.new
-game.engine_start
+game.output_man
 
 
 

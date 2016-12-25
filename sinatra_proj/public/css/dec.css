@@ -48,8 +48,8 @@ button {
 #output_hangman{
   position: relative;
   border: groove;
-  height: 300px;
-  width: 600px;
+  height: 601px;
+  width: 450px;
   margin: auto;
 
 }
