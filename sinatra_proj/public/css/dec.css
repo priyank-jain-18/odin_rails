@@ -1,0 +1,41 @@
+body {
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+#options {  
+  top: 50%;
+ 
+}
+
+button {
+  margin: 23px;
+  font-size: 22px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  width: 175px;
+  height: 175px;
+}
+
+
+#apply{
+  margin: 23px;
+  font-size: 22px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  width: 175px;
+  height: 75px;
+}
+
+#output_caesar{
+  position: relative;
+  border: groove;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+
+}
