@@ -9,3 +9,5 @@ def caesar_cipher (string, number)
 	end
 	return caesar_string
 end
+
+puts caesar_cipher("Testing",5)
