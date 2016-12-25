@@ -18,7 +18,9 @@ get '/hang_man.html' do
 	erb:hang_man, locals: {output: output}
 end
 
+post '/runHangman' do
 
+end
 
 post '/runCaesar' do 	
     translation = caesar_cipher(params["str"].to_s, params["vals"].to_i)

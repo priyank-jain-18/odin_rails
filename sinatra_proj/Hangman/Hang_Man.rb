@@ -16,35 +16,9 @@ class Hangman
 
 	end
 
-	def output_man
-
-        man = "		 ___________.._______ <br>" +
-        "| .__________))______| <br>" +
-        "| | / /      #{@misses >= 1 ? '||' : ''} <br>" +
-        "| |/ /       #{@misses >= 1 ? '||' : ''} <br>" +
-        "| | /        #{@misses >= 1 ? '||.-\'\'.' : ''} <br>" +
-        "| |/         #{@misses >= 1 ? '|/  _  \\' : ''} <br>" +
-        "| |          #{@misses >= 1 ? '||  `/,|' : ''} <br>" +
-        "| |          #{@misses >= 1 ? '(\\`_.\'' : ''} <br>" +
-        "| |         #{@misses >= 1 ? '.-`--\'.' : ''} <br>" +
-        "| |        #{@misses >= 3 ? '/Y': '  '} #{@misses >= 2 ? '. .' : ''} #{@misses >= 4 ? 'Y\\' : ''}  <br>" +
-        "| |       #{@misses >= 3 ? '//' : '  '} #{@misses >= 2 ? '|   |' : ''} #{@misses >= 4 ? '\\\\' : ''} <br>" +
-        "| |      #{@misses >= 3 ? '//' : '  '}  #{@misses >= 2 ? '| . |' : ''}  #{@misses >= 4 ? '\\\\' : ''} <br>"  +
-        "| |     #{@misses >= 3 ? '\')' : '  '}   #{@misses >= 2 ? '|   |' : ''}   #{@misses >= 4 ? '(`' : ''}  <br>" +
-        "| |          #{@misses >= 5? '||\'' : ''}#{@misses >= 6 ? '||' : ''} <br>" +
-        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
-        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
-        "| |          #{@misses >= 5 ? '||' : ''} #{@misses >= 6 ? '||' : ''} <br>" +
-        "| |         #{@misses >= 5 ? '/ |' : ''} #{@misses >= 6 ? '| \\' : ''} <br>" +
-        "\"\"\"\"\"\"\"\"\"\"|_#{@misses >= 5 ? '`-\'' : '   '} #{@misses >= 6 ? '`-\' ' : '    '} |\"\"\"| <br>" +
-        "|\"|\"\"\"\"\"\"\"\\ \\        '\"|\"| <br>" +
-        "| |        \\ \\         | | <br>" +
-        ": :         \\ \\        : :   <br>" +
-        ". .          `'        . . <br>"       
+	def output_man    
        # print "Missed: " unless @missed_words.empty?
-        #@missed_words.each {|letter| print letter.upcase + ', ' } unless @missed_words.empty?
-
-        return man
+        #@missed_words.each {|letter| print letter.upcase + ', ' } unless @missed_words.empty?        
     end
 
     def generate_hangman_word
@@ -101,13 +75,13 @@ class Hangman
 
     def engine_start
     	@random_word = generate_hangman_word
-    	output_man    	
+    	    	
 
     	while win? == false && lose?   == false
 
     		letter = input_letter
     		check_if_part(letter)
-    		output_man
+    		
     	end
     	puts "<br>YOU LOSE, the correct word is #{@random_word}" if lose?
     	puts "<br>YOU WIN CONGRATS" if win?
@@ -115,10 +89,6 @@ class Hangman
 
 
 end
-
-
-game = Hangman.new
-game.output_man
 
 
 

@@ -53,3 +53,17 @@ button {
   margin: auto;
 
 }
+
+.stats {
+
+   margin-bottom: -30px;
+   margin-top: -35px;
+}
+
+#stats {
+  display: inline-block;  
+  height: 30px;
+  margin: 30px;
+
+ 
+}
