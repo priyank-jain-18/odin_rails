@@ -1,6 +1,7 @@
 body {
 	background-color: #f2f2f2;
 	text-align: center;
+
 }
 
 #options {  
@@ -35,7 +36,6 @@ button {
   position: relative;
   border: groove;
   height: 300px;
-  width: 300px;
+  width: 600px;
   margin: auto;
-
 }
