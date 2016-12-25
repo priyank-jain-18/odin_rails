@@ -38,4 +38,9 @@ button {
   height: 300px;
   width: 600px;
   margin: auto;
+
+}
+
+#caesar_string {
+  font-size: 42px;
 }
