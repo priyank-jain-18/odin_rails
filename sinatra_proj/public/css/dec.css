@@ -44,3 +44,12 @@ button {
 #caesar_string {
   font-size: 42px;
 }
+
+#output_hangman{
+  position: relative;
+  border: groove;
+  height: 300px;
+  width: 600px;
+  margin: auto;
+
+}

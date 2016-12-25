@@ -1,10 +1,24 @@
 <html>
   <head>
-    <link type="text/css" rel="stylesheet" href="css/dec.css">
+    <link type="text/css" rel="stylesheet" href="/css/dec.css">
   </head>
   <body>
-    <div id = "main_div"> 
-    <h1>TESTING</h1>      
+    <div id = "main_div_h"> 
+
+    <h1>HANGMAN</h1>
+
+      <form method="post" action="/runHangman">
+        GUESS THE LETTER: <input type="text" id="str" name = "str" >
+        <button type="submit" id="apply">APPLY</button>
+      </form>
+
+        <div id = "output_hangman"> 
+          <p id = "caesar_string"><%= output %></p>
+        </div>      
     </div>
+    
+      <form method="post" action="/backMenu">
+        <button type="submit" id="back_to_main">BACK</button>
+      </form>
   </body
 </html>
