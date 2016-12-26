@@ -1,0 +1,1 @@
+I post here code that I made from learning in the Odin Project rails course!
