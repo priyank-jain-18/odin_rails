@@ -15,34 +15,26 @@ end
 
 get '/hang_man.html' do
 	@play = false
-	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
-	erb:hang_man, locals: {output: output,play: @play}
+	@output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
+	erb:hang_man
 end
 
 post '/runHangman' do	
 	@@game.engine_start(params["str"].to_s)
-	output = what_image	
-	@play = true
-    secret_code = @@game.coded_word.split('').join(' ')      
-	turns = @@game.turns
-	missed = @@game.missed_words unless @@game.misses == []	
-	guess = @@game.misses
-	
-	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}
+	@output = what_image
+	state_assign
+	puts "REEEEEEEEEEEEEEEE " + "#{@@game.random_word}"
 
+	erb:hang_man
 end
 
 post '/playHangman' do
 	@@game.reset
-	secret_code = @@game.coded_word.split('').join(' ') 
-	turns = @@game.turns
-	missed = @@game.missed_words if @@game.misses == []
-
-	guess = @@game.misses
-
-	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
 	@play = true
-	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}
+
+	@output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
+	
+	erb:hang_man
 end
 
 post '/runCaesar' do 	
@@ -61,5 +53,30 @@ end
 post '/hangman_but' do
 	redirect 'hang_man.html'
 end
+
+helpers do
+	def state_assign 
+		@play = true
+        @secret_code = @@game.coded_word.split('').join(' ')      
+	    @turns = @@game.turns
+	    @missed = @@game.missed_words unless @@game.misses == []	
+	    @guess = @@game.misses
+	end
+
+    def what_image
+	    return "<img src = \"hangaman_pics/Hangman_0.jpg\"> " if @@game.misses == 0
+	    return "<img src = \"hangaman_pics/Hangman_1.jpg\"> " if @@game.misses == 1
+	    return "<img src = \"hangaman_pics/Hangman_2.jpg\"> " if @@game.misses == 2
+	    return "<img src = \"hangaman_pics/Hangman_3.jpg\"> " if @@game.misses == 3
+	    return "<img src = \"hangaman_pics/Hangman_4.jpg\"> " if @@game.misses == 4
+	    return "<img src = \"hangaman_pics/Hangman_5.jpg\"> " if @@game.misses == 5
+	    return "<img src = \"hangaman_pics/Hangman_6.jpg\"> " if @@game.misses == 6
+    end
+
+
+end
+
+
+
 
 

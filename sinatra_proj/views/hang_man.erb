@@ -26,21 +26,21 @@
       <% end%>
 
       <% if @play == true  && @@game.win? == false && @@game.lose? == false%>
-        <h2><%= secret_code %></h2>    
+        <h2><%= @secret_code %></h2>    
         <form method="post" action="/runHangman">
           LETTER: <input type="text" id="str" name = "str" >
           <button type="submit" id="apply">GUESS!</button>
         </form>
     
         <div class = "stats">
-          <p id ="stats">Misses: <%= guess%></p>   
-          <p id ="stats">Number of Corrects: <%= turns%></p>
-          <p id ="stats">Wrong Letters: <%= missed%></p>
+          <p id ="stats">Misses: <%= @guess%></p>   
+          <p id ="stats">Number of Corrects: <%= @turns%></p>
+          <p id ="stats">Wrong Letters: <%= @missed%></p>
         </div>
       <%end%>
 
       <div id = "output_hangman"> 
-        <p id = "hang_out"><%= output %></p>
+        <p id = "hang_out"><%= @output %></p>
       </div>      
 
     </div>
