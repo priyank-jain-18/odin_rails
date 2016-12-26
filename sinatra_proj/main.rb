@@ -14,18 +14,30 @@ get '/caesar_cipher.html' do
 end
 
 get '/hang_man.html' do
+	@play = false
 	secret_code = @@game.coded_word
 	turns = @@game.turns
 	missed = @@game.missed_words if @@game.misses == []
 	
 	guess = @@game.misses
 	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
-	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess}
+	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}
 end
 
 post '/runHangman' do
 
 
+end
+
+post '/playHangman' do
+	secret_code = @@game.coded_word
+	turns = @@game.turns
+	missed = @@game.missed_words if @@game.misses == []
+	
+	guess = @@game.misses
+	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
+	@play = true
+	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}
 end
 
 post '/runCaesar' do 	
