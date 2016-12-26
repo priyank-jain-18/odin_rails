@@ -6,7 +6,7 @@ class Hangman
 		@correct = 0
 		@turns = 0
 
-		@random_word = nil
+		@random_word = ''
 		@coded_word = nil
 		@missed_words = Array.new
 	end
@@ -47,7 +47,7 @@ class Hangman
     end
 
     def win?
-    	return true if @correct == @random_word.length && !lose?
+    	return true if @correct == @random_word.length && !lose? && @correct != 0
     	return false
     end
 

@@ -7,11 +7,11 @@
 
       <h1>HANGMAN</h1>
 
-      <%if @@game.win? == true || @@game.lose? == true %>
-        <%if @@game.win? == true%>
+      <%if session["game"].win? == true || session["game"].lose? == true %>
+        <%if session["game"].win? == true%>
           <h2>YOU WON THE GAME!</h2>
-        <%elsif @@game.lose? == true%>
-          <h2>You lost the game, the correct word is: <%= @@game.random_word%> 
+        <%elsif session["game"].lose? == true%>
+          <h2>You lost the game, the correct word is: <%= session["game"].random_word%> 
         <%end%>
 
         <form method="post" action="/playHangman">     
@@ -25,7 +25,7 @@
         </form>
       <% end%>
 
-      <% if @play == true  && @@game.win? == false && @@game.lose? == false%>
+      <% if @play == true  && session["game"].win? == false && session["game"].lose? == false%>
         <h2><%= @secret_code %></h2>    
         <form method="post" action="/runHangman">
           LETTER: <input type="text" id="str" name = "str" >
