@@ -12,7 +12,7 @@
     </form>
     <% end%>
 
-    <% if @play%>
+    <% if @play == true%>
     <h2><%= secret_code %></h2>    
     <form method="post" action="/runHangman">
         LETTER: <input type="text" id="str" name = "str" >
