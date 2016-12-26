@@ -11,11 +11,6 @@ class Hangman
 		@missed_words = Array.new
 	end
 
-	def output_man    
-       # print "Missed: " unless @missed_words.empty?
-        #@missed_words.each {|letter| print letter.upcase + ', ' } unless @missed_words.empty?        
-    end
-
     def generate_hangman_word
     	words = File.readlines('Hangman/dictionary.txt')
     	not_good_word = true
@@ -35,7 +30,6 @@ class Hangman
         end
         return inp_char 
     end
-
 
     def check_if_part(letter)
     	@random_word.each_char.with_index do |char,index|            
@@ -74,6 +68,4 @@ class Hangman
         @turns = 0
         @missed_words = Array.new
     end
-
-
 end
