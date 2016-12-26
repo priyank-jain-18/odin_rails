@@ -1,4 +1,3 @@
-require 'json'
 class Hangman
 	attr_accessor :misses, :correct, :random_word, :coded_word, :missed_words, :turns
 
@@ -21,16 +20,16 @@ class Hangman
     end
 
     def generate_hangman_word
-    	words = File.readlines('dictionary.txt')
+    	words = File.readlines('Hangman/dictionary.txt')
     	not_good_word = true
     	
     	while not_good_word
     		picked_word = words[rand(words.size)].gsub(/\s+/, "")
     		not_good_word = false if picked_word.length >= 5 && picked_word.length <= 12
     	end
-    	@coded_word = "_" * picked_word.gsub(/\s+/, "").length
+    	@coded_word = "_ " * picked_word.gsub(/\s+/, "").length
 
-       	return picked_word.gsub(/\s+/, "")
+       	@random_word = picked_word.gsub(/\s+/, "")
     end
 
     def input_letter(input_char = 'gg')
@@ -71,7 +70,7 @@ class Hangman
     end
 
     def engine_start(input)
-    	@random_word = generate_hangman_word    	    	
+    	  	    	
     	while win? == false && lose? == false
     		letter = input_letter(input)
     		check_if_part(letter)    		

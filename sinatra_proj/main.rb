@@ -21,7 +21,6 @@ end
 
 post '/runHangman' do
 
-
 end
 
 post '/playHangman' do
