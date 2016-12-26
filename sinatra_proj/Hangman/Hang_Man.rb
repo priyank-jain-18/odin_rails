@@ -32,13 +32,9 @@ class Hangman
        	@random_word = picked_word.gsub(/\s+/, "")
     end
 
-    def input_letter(input_char = 'gg')
-    	while inp_char.length != 1 && inp_char.is_a?(String) && inp_char =~ /[A-Za-z]/
-    	    print "<br>Enter a character: "
-            inp_char = gets.chomp
-            
-    	    puts "please enter a SINGLE charater " if inp_char.length != 1
-    	    puts "please enter a letter not a number" if inp_char.is_a?(Integer)    	  
+    def input_letter(inp_char = 'gg')
+    	if inp_char.length != 1 && inp_char.is_a?(String) && inp_char =~ /[A-Za-z]/    	    
+            return nil	  
         end
         return inp_char 
     end
@@ -70,11 +66,8 @@ class Hangman
     end
 
     def engine_start(input)
-    	  	    	
-    	while win? == false && lose? == false
     		letter = input_letter(input)
-    		check_if_part(letter)    		
-    	end
+    		check_if_part(letter)    		    	
     end
 
 

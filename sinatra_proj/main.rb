@@ -20,6 +20,16 @@ get '/hang_man.html' do
 end
 
 post '/runHangman' do
+	@@game.engine_start(params["str"].to_s)
+	output = what_image	
+
+	@play = true
+    secret_code = @@game.coded_word
+	turns = @@game.turns
+	missed = @@game.missed_words unless @@game.misses == []	
+	guess = @@game.misses
+	
+	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}
 
 end
 
