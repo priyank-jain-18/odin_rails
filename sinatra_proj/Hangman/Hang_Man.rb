@@ -9,9 +9,6 @@ class Hangman
 		@random_word = nil
 		@coded_word = nil
 		@missed_words = Array.new
-
-		@save_name = nil
-
 	end
 
 	def output_man    
@@ -27,21 +24,21 @@ class Hangman
     		picked_word = words[rand(words.size)].gsub(/\s+/, "")
     		not_good_word = false if picked_word.length >= 5 && picked_word.length <= 12
     	end
-    	@coded_word = "_ " * picked_word.gsub(/\s+/, "").length
+    	@coded_word = "_" * picked_word.gsub(/\s+/, "").length
 
        	@random_word = picked_word.gsub(/\s+/, "")
     end
 
     def input_letter(inp_char = 'gg')
     	if inp_char.length != 1 && inp_char.is_a?(String) && inp_char =~ /[A-Za-z]/    	    
-            return nil	  
+            return ''	  
         end
         return inp_char 
     end
 
 
     def check_if_part(letter)
-    	@random_word.each_char.with_index do |char,index|
+    	@random_word.each_char.with_index do |char,index|            
     		if letter == char
     			@coded_word[index] = letter
     			@correct += 1
@@ -68,6 +65,14 @@ class Hangman
     def engine_start(input)
     		letter = input_letter(input)
     		check_if_part(letter)    		    	
+    end
+
+    def reset
+        generate_hangman_word
+        @misses = 0
+        @correct = 0
+        @turns = 0
+        @missed_words = Array.new
     end
 
 

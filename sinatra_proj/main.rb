@@ -19,12 +19,11 @@ get '/hang_man.html' do
 	erb:hang_man, locals: {output: output,play: @play}
 end
 
-post '/runHangman' do
+post '/runHangman' do	
 	@@game.engine_start(params["str"].to_s)
 	output = what_image	
-
 	@play = true
-    secret_code = @@game.coded_word
+    secret_code = @@game.coded_word.split('').join(' ')      
 	turns = @@game.turns
 	missed = @@game.missed_words unless @@game.misses == []	
 	guess = @@game.misses
@@ -34,11 +33,13 @@ post '/runHangman' do
 end
 
 post '/playHangman' do
-	secret_code = @@game.coded_word
+	@@game.reset
+	secret_code = @@game.coded_word.split('').join(' ') 
 	turns = @@game.turns
 	missed = @@game.missed_words if @@game.misses == []
-	
+
 	guess = @@game.misses
+
 	output = "<img src = \"hangaman_pics/Hangman_0.jpg\"> "	
 	@play = true
 	erb:hang_man, locals: {output: output,secret_code: secret_code, turns: turns, missed: missed,guess: guess,play: @play}

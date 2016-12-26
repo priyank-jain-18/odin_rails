@@ -5,30 +5,43 @@
   <body>
     <div id = "main_div_h"> 
 
-    <h1>HANGMAN</h1>
-    <% if @play == false%>
-    <form method="post" action="/playHangman">
-        <button type="submit" id="apply">PLAY GAME</button>
-    </form>
-    <% end%>
+      <h1>HANGMAN</h1>
 
-    <% if @play == true  && @@game.win? == false && @@game.lose? == false%>
-    <h2><%= secret_code %></h2>    
-    <form method="post" action="/runHangman">
-        LETTER: <input type="text" id="str" name = "str" >
-        <button type="submit" id="apply">GUESS!</button>
-    </form>
+      <%if @@game.win? == true || @@game.lose? == true %>
+        <%if @@game.win? == true%>
+          <h2>YOU WON THE GAME!</h2>
+        <%elsif @@game.lose? == true%>
+          <h2>You lost the game, the correct word is: <%= @@game.random_word%> 
+        <%end%>
+
+        <form method="post" action="/playHangman">     
+          <button type="submit" id="apply">NEW GAME?</button>
+        </form>
+      <%end%>
+
+      <% if @play == false%>
+        <form method="post" action="/playHangman">
+          <button type="submit" id="apply">PLAY GAME</button>
+        </form>
+      <% end%>
+
+      <% if @play == true  && @@game.win? == false && @@game.lose? == false%>
+        <h2><%= secret_code %></h2>    
+        <form method="post" action="/runHangman">
+          LETTER: <input type="text" id="str" name = "str" >
+          <button type="submit" id="apply">GUESS!</button>
+        </form>
     
-      <div class = "stats">
-        <p id ="stats">Misses: <%= guess%></p>   
-        <p id ="stats">Turns: <%= turns%></p>
-        <p id ="stats">Guessed Letters: <%= missed%></p>
-      </div>
-    <%end%>
+        <div class = "stats">
+          <p id ="stats">Misses: <%= guess%></p>   
+          <p id ="stats">Number of Corrects: <%= turns%></p>
+          <p id ="stats">Wrong Letters: <%= missed%></p>
+        </div>
+      <%end%>
 
-    <div id = "output_hangman"> 
-      <p id = "hang_out"><%= output %></p>
-    </div>      
+      <div id = "output_hangman"> 
+        <p id = "hang_out"><%= output %></p>
+      </div>      
 
     </div>
     
