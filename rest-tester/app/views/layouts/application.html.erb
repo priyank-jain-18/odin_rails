@@ -7,8 +7,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
 
   <body>
+    <p> The users body part before yield </p>
     <%= yield %>
+    <p>The users body part after yield</p>
   </body>
+
+  
 </html>
