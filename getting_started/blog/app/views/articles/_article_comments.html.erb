@@ -1,0 +1,15 @@
+<h2>Comments</h2>
+<% if @article.comments.empty? %>
+  <p> -- No comments -- </p>
+<%end %>  
+<% @article.comments.each do |comment| %>
+	<p>
+	  <strong>Username:</strong>
+	  <%= comment.username %>
+	</p>
+
+	<p>
+	  <strong>Comment: </strong>
+	  <%= comment.body %>
+	</p>
+<%end%>
