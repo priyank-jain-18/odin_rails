@@ -7,8 +7,8 @@
   <strong>TEXT: </strong>
   <%= @article.text %>
 </p>
-<%= render 'article_comments'%>
-<%= render 'new_comment' %>
+<%= render 'comments/article_comments'%>
+<%= render 'comments/new_comment' %>
 
 <%= link_to 'Edit', articles_path %>
 <%= link_to 'Back', articles_path %>
