@@ -1,0 +1,26 @@
+<% provide(:title, @user.name) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Picture</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Created At </th>
+    <th>Updated At </th>
+  </tr>
+
+  <tr>
+    <td><%= gravatar_for(@user) %> </td>
+    <td><%= @user.name %>  </td>
+    <td><%= @user.email%></td>
+    <td><%= @user.created_at%></td>
+    <td><%= @user.updated_at%></td>
+  </tr>
+
+</table>
