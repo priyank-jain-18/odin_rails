@@ -12,4 +12,9 @@ module SessionsHelper
 		return true if current_user.nil? == false
 	end
 
+	def logout
+		session.delete(:user_id)
+		@current_user = nil
+	end
+
 end
