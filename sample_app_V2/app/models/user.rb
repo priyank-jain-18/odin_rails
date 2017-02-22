@@ -9,7 +9,7 @@ class User < ApplicationRecord
 	validates :email,presence: true,length: {maximum: 255}, format: { with: VALID_EMAIL_REGEX},
 		uniqueness: {case_sensitive: false}
 
-	validates :password, length: {in: 6..75}, presence: true
+	validates :password, length: {in: 6..75}, presence: true, allow_nil: true
 	has_secure_password
 
 	def User.digest(string) #returns an encrypted hash via bycrypt
