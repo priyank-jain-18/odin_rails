@@ -1,9 +1,11 @@
 # Ruby on Rails Tutorial sample application
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
+Heroku Website: https://mighty-taiga-92218.herokuapp.com/
+
+
+A simple professional grade website about microposting, built with the help of [*Ruby on Rails Tutorial:
 Learn Web Development with Rails*](http://www.railstutorial.org/)
-I rebuilt the tutorial in accordance with the book
+
 
 ## License
 
@@ -13,9 +15,6 @@ is available jointly under the MIT License and the Beerware License. See
 
 ## Getting started
 
-To get started with the app, clone the repo and then install the needed gems:
-
-```
 $ bundle install --without production
 ```
 
