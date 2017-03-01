@@ -55,4 +55,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_empty cookies['remember_token']
   end
 
+  test "login should redirect to root when not activated" do
+  	log_in_as(users(:non_activated))
+  	assert_redirected_to root_url
+  	assert_not_empty flash[:warning]
+  end
+
 end

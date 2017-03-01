@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token
+  	attr_accessor :remember_token, :activation_token
+  	before_save   :downcase_email
+  	before_create :create_activation_digest
 
-	before_save {self.email.downcase!}
+	#VALIDATIONS
 
 	validates :name,presence: true,length: {maximum: 50}
 
@@ -11,6 +13,8 @@ class User < ApplicationRecord
 
 	validates :password, length: {in: 6..75}, presence: true, allow_nil: true
 	has_secure_password
+
+	#METHODS
 
 	def User.digest(string) #returns an encrypted hash via bycrypt
     	cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -22,19 +26,39 @@ class User < ApplicationRecord
     	SecureRandom.urlsafe_base64
     end
 
-    def remember #remembers a user in the data base
-      self.remember_token = User.new_token
-      update_attribute(:remember_digest, User.digest(self.remember_token))
+    def remember #generates a random hash and stores in database
+      	self.remember_token = User.new_token
+        update_attribute(:remember_digest, User.digest(self.remember_token))
                                            #user digest means to encrypt
     end
 
-    def authenticated?(remember_token) #returns true if both matches
-    	return false if remember_digest.nil?
-    	BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    def authenticated?(attribute,token) #decrypts the attribute and returns true if both matches
+    	digest = self.send("#{attribute}_digest")
+    	return false if digest.nil?
+    	BCrypt::Password.new(digest).is_password?(token)
     	        #password.new means to decrypt
     end
 
     def forget
 		update_attribute(:remember_digest,nil)
+	end
+
+	def activate		
+		update_columns(activated: true, activated_at: Time.zone.now)		
+	end
+
+	def send_activation_email
+		UserMailer.account_activation(self).deliver_now
+	end
+
+	private 
+
+	def create_activation_digest
+		self.activation_token = User.new_token
+		self.activation_digest = User.digest(activation_token)
+	end
+
+	def downcase_email
+		return self.email.downcase!
 	end
 end

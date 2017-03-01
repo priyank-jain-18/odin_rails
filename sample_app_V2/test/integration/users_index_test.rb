@@ -5,6 +5,8 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		@user = users(:archer)
 		@user2 = users(:michael)
 		@user3 = users(:saber)
+		@user4 = users(:malory)
+		@non_activated = users(:non_activated)
 
 		@admin = users(:michael)
 	end
@@ -18,11 +20,12 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		log_in_as(@user)
 		get users_path
   	
-		assert_select 'ul.users' do |user_el| 
-			assert_select user_el, 'li', count: 30
-			assert_select user_el, 'a[href=?]', user_path(@user), count: 1
-			assert_select user_el, 'a[href=?]', user_path(@user2), count: 1
-			assert_select user_el, 'a[href=?]', user_path(@user3), count: 1
+		assert_select 'ul.users' do |user| 
+			assert_select user, 'li', count: 30		
+			assert_select user, 'a[href=?]', user_path(@user), count: 1
+			assert_select user, 'a[href=?]', user_path(@user2), count: 1
+			assert_select user, 'a[href=?]', user_path(@user3), count: 1
+			assert_select user, 'a[href=?]', user_path(@user4), count: 1			
 		end
 	end
 
@@ -38,18 +41,16 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 	end
 
 
-	test "makes sure that there are delete links available when admin" do
+	test "should only show delete links to admins" do
 		log_in_as(@admin)
 		get users_path
 		assert_template 'users/index'
 		assert_select 'div.pagination'
-
-		User.paginate(page: 1).each do |user_in| #make sure there are delete buttons
-			unless user_in == @admin
-				assert_select 'a[href=?]', user_path(user_in), text: 'delete'
+		User.paginate(page: 1).each do |user| #make sure there are delete buttons
+			unless user == @admin
+				assert_select 'a[href=?]', user_path(user), text: 'delete'
 			end
 		end
-
 		assert_difference 'User.count', -1 do
 			delete user_path(@user)
 		end
@@ -64,6 +65,8 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 		assert_no_difference 'User.count' do
 			delete user_path(@user3)
 		end
-	end		
+	end
+
+
 
 end
