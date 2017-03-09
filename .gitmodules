@@ -1,3 +1,6 @@
 [submodule "members-only"]
 	path = members-only
 	url = https://github.com/NuclearMachine/members-only
+[submodule "Sample_app"]
+	path = Sample_app
+	url = https://github.com/NuclearMachine/Sample_app
