@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+normal_user:
+  username: tester
+  email: tester@gmail.com
+  password_digest: <%=User.digest('tester123')%>
+
+<% 45.times do |num| %>
+normal_user<%=num%>:
+  username: <%="tester#{num}"%>
+  email: <%= "tester#{num}@gmail.com" %>
+  password_digest: <%=User.digest('tester123')%>
+<%end%>
+
+
