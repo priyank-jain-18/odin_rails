@@ -24,7 +24,6 @@ class User < ApplicationRecord
 		return BCrypt::Password.create(string, cost: cost) 
 	end	
 
-
 	private
 
 	def downcase_email
