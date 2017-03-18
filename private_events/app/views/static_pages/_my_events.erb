@@ -1,0 +1,9 @@
+<% if @events_feed.any? %>
+  <h3>Events (<%= @current_user.events.count %>) </h3>
+  <ol class = "microposts">
+    <%= render @events %>
+  </ol>
+  <%= will_paginate @events_feed %>
+<% else %>
+	<h2> No events currently planned..</h2>
+<% end %>

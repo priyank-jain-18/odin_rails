@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316145620) do
+ActiveRecord::Schema.define(version: 20170318114317) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "creator_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -18,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170316145620) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "attended_event"
+    t.index ["attended_event"], name: "index_users_on_attended_event"
   end
 
 end

@@ -1,1 +1,7 @@
-<h1>Events should be here</h1>
+<% if logged_in? %>
+    <% provide(:title, "Events") %>
+	<%= render "static_pages/events_board" %>
+<% else %>
+	<% provide(:title, "Welcome Page") %>
+    <%= render "static_pages/guest_homepage" %>
+<%end%>

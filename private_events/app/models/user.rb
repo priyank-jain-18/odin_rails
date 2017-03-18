@@ -1,6 +1,9 @@
 class User < ApplicationRecord
 	before_save :downcase_email
 
+	has_many :events, class_name: "Event", foreign_key: "creator_id"
+	belongs_to :attended_event, class_name: "Event", optional: true
+
 	#VALIDATION
 	#username
 	LETTERS_AND_NUMBERS_ONLY = /\A[a-zA-Z0-9]*\z/
@@ -24,9 +27,15 @@ class User < ApplicationRecord
 		return BCrypt::Password.create(string, cost: cost) 
 	end	
 
+	def events_feed
+		Event.where(id: id)
+	end
+
 	private
 
 	def downcase_email
 		self.email.downcase!
 	end	
+
+
 end

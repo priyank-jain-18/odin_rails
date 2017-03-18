@@ -1,0 +1,16 @@
+<div class="row">
+  <aside class="col-md-4">
+
+    <section class="user_info">
+      <h1><%= current_user.username %></h1>
+    </section>
+
+    <section class="micropost_form">
+      <%= render 'event_form' %>
+    </section>
+    
+  </aside>
+  <div class="col-md-8">
+    <%= render 'my_events' %>
+  </div>
+</div>
