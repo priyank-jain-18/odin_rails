@@ -1,0 +1,8 @@
+<li>
+	<span class="user">
+	<h3><%= link_to event.title, event %></h3>
+	<span class="content"><p><%= event.description %></p></span>
+	<span class="timestamp">
+		<h6>created <%= time_ago_in_words(event.created_at) %> ago by <%= link_to event.creator.username, event.creator %> </h6>
+	</span>
+</li>

@@ -1,8 +1,10 @@
 class User < ApplicationRecord
 	before_save :downcase_email
 
-	has_many :events, class_name: "Event", foreign_key: "creator_id"
-	belongs_to :attended_event, class_name: "Event", optional: true
+	has_many :events, class_name: "Event", foreign_key: :creator_id
+	has_many :invitations, through: :events, source: :attendees
+
+	has_many :invitation_requests, class_name: "Invitation", foreign_key: :invited_user
 
 	#VALIDATION
 	#username

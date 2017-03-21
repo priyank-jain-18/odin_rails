@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 
   def create
-  	@event = current_user.events.build(event_params)
-  	if @event.save
+  	@event = current_user.events.build(event_params)    
+  	if @event.save 
   		redirect_to root_url
-  	else
-  		render 'static_pages/home'
+  	else      
+      render 'new'
   	end
   end
 
@@ -19,8 +19,6 @@ class EventsController < ApplicationController
 
   private
   	def event_params
-  		params.require(:event).permit(:title,:description)
+  		params.require(:event).permit(:title,:description,attendees_attributes: [:invited_user] )
   	end
-
-
 end

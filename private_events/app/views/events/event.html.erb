@@ -1,8 +1,0 @@
-<li>
-	<span class="user"><%= link_to event.creator.username, event.creator %>
-	<h6><%= event.title %>
-	<span class="content"><%= event.description %></span>
-	<span class="timestamp">
-		Posted <%= time_ago_in_words(event.created_at) %> ago
-	</span>
-</li>

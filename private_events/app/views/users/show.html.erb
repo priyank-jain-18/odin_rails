@@ -9,9 +9,9 @@
   </aside>
   <div class="col-md-8">
   	<% if @user.events.any? %>
-  		<h3>Events (<%= @user.microposts.count %>) </h3>
+  		<h3>Events (<%= @user.events.count %>) </h3>
   		<ol class = "microposts">
-  			<%= render @events %>
+  			<%= render @user.events %>
   		</ol>
   		<%= will_paginate @events %>
   	<% end %>

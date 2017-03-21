@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318114317) do
+ActiveRecord::Schema.define(version: 20170320134144) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "creator_id"
@@ -18,7 +18,14 @@ ActiveRecord::Schema.define(version: 20170318114317) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "attended_event"
+    t.string   "invited_user"
+    t.boolean  "accepted",       default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -27,8 +34,6 @@ ActiveRecord::Schema.define(version: 20170318114317) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "attended_event"
-    t.index ["attended_event"], name: "index_users_on_attended_event"
   end
 
 end
