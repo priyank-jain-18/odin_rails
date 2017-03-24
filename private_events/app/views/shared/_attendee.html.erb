@@ -1,0 +1,7 @@
+<li> 
+<%= link_to attendee.invited_user, username_to_user(attendee.invited_user) %> 
+<% if attendee.attended_event.creator == current_user%> <%#will show kick when you are event creator%>
+<h2> <%= link_to "kick user", kick_user_path(username_to_user(attendee.invited_user)), method: :delete %></h2>
+<%end%>
+</li>
+	

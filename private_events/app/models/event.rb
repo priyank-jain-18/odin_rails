@@ -3,8 +3,12 @@ class Event < ApplicationRecord
 	has_many :attendees,
 	 class_name: "Invitation", foreign_key: "attended_event", dependent: :destroy
 
+	has_many :mass_invitations, class_name: "MassUsersInvitation", foreign_key: "event"
+
 	default_scope -> {order(created_at: :desc)}	
 	
 	validates :title, presence: true, length: {in: 4..25}
 	validates :description, presence: true, length: {in: 4..120}
+	validates :event_start_date, presence: true
+
 end

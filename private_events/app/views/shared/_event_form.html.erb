@@ -8,5 +8,10 @@
 		class: 'form-control' %>
 	</div>
 
+	<%= f.label :event_start_date, "Event start" %>
+	<%= f.date_field :event_start_date,
+	 	min: Time.zone.today,
+	 	max: 1.year.from_now%>
+
 	<%= f.submit "Create Event", class: "btn btn-primary" %>
 <%end%>

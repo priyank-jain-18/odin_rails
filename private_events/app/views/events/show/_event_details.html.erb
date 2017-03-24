@@ -1,0 +1,7 @@
+    <h1><%= @event.title %> </h1>
+    <h3><%= @event.description %></h3>
+    <% if !event_ended?(@event) %>
+      <h2>starts <%=time_ago_in_words(@event.event_start_date)%> from now </h2>
+    <% else %>
+   	  <h2> Event has ended </h2>
+    <%end%>

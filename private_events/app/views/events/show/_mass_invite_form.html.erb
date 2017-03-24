@@ -1,0 +1,18 @@
+<%= form_for(@invite_users, url: invite_users_path) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<%= hidden_field_tag(:event_id, "#{@invite_users.event.id}") %>
+
+	<%= f.label :multiple_users, "Invite Users" %>
+	<%= f.text_area :multiple_users, 
+	    placeholder: "seperate by comma eg: (maruo,samuel,moller31)",
+		class: 'form-control' %>
+		
+	<%= f.submit "Send Invitations", class: "btn btn-primary" %>
+<%end%>
+
+
+
+
+
+

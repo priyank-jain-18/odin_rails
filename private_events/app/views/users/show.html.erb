@@ -1,19 +1,14 @@
 <% provide(:title, @user.username) %>
+
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @user.username %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-  	<% if @user.events.any? %>
-  		<h3>Events (<%= @user.events.count %>) </h3>
-  		<ol class = "microposts">
-  			<%= render @user.events %>
-  		</ol>
-  		<%= will_paginate @events %>
-  	<% end %>
+  <div class="col-md-6 col-md-offset-3">
+    <% if @user.events.any? %>
+      <h1> <%= @user.username %> events </h1>
+      <ol class = "microposts">
+        <%= render @user.events %>
+      </ol>
+      <%= will_paginate @events %>
+    <% end %>
   </div>
+
 </div>

@@ -1,0 +1,2 @@
+module MassUsersInvitationsHelper
+end
