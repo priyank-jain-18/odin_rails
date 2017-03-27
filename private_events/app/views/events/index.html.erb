@@ -1,2 +1,21 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1> Current Events </h1>
+<ol class="microposts">
+<% if @current_events.any? %>
+	<% @current_events.each do |event|%>
+  		<%= render event %>
+	<% end %>
+	<%= will_paginate @current_events%>
+<%else%>
+	<h2> There are no current events </h2>
+<% end %>
+
+<h1> Old Events </h1>
+<% if @passed_events.any? %>
+	<% @passed_events.each do |passed_event| %>		
+		<%= render passed_event %>
+	<%end%>
+	<%= will_paginate @passed_events%>
+<%else%>
+	<h2> There are no old events (yet) </h2>
+<% end %>
+</ol>

@@ -25,7 +25,8 @@ before_action :logged_in_users_only, only: :create
   end
 
   def index
-  	@events = Event.all
+  	@current_events = Event.where("event_start_date > ?", Time.zone.now).paginate(page: params[:page], per_page: 5 )
+    @passed_events = Event.where("event_start_date < ?", Time.zone.now).paginate(page: params[:page], per_page: 5 )
   end
 
   private
