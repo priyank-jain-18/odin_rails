@@ -1,0 +1,13 @@
+<li>	
+	<span class="user">
+		<h3><%= link_to invitation.attended_event.title, event_path(invitation.attended_event) %></h3>
+		<span class="content"><p><%= invitation.attended_event.description %></p></span>
+		<span class="timestamp">		
+			<h6> created by <%= link_to invitation.attended_event.creator.username, invitation.attended_event.creator %> </h6>
+			<h6>starts in <%= time_ago_in_words(invitation.attended_event.event_start_date)%></h6>
+			<h6>[<%= link_to "Accept", invitation_path(invitation), method: :patch %>]
+			[<%= link_to "Decline",invitation_path(invitation),method: :delete %>]</h6>
+		</span>
+	</span>
+</li>
+

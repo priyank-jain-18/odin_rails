@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
+before_action :logged_in_users_only, only: :create
 
   def create
   	@event = current_user.events.build(event_params)    
+    redirect_to root_url if @event.creator != current_user
   	if @event.save 
   		redirect_to root_url
   	else      
@@ -11,7 +13,7 @@ class EventsController < ApplicationController
 
   def show
   	@event = Event.find(params[:id])
-    @attendees = @event.attendees.paginate(page: params[:page])
+    @attendees = @event.attendees.where(accepted: true).paginate(page: params[:page])
     if session[:mass_user_errors].present?
       @invite_users = @event.mass_invitations.build                    
       @invite_users.multiple_users = session[:mass_user_list]      
@@ -26,8 +28,6 @@ class EventsController < ApplicationController
   	@events = Event.all
   end
 
-
-
   private
 
  	def event_params
@@ -41,6 +41,5 @@ class EventsController < ApplicationController
     session.delete(:mass_user_list)
     session.delete(:mass_user_errors)
   end
-
 
 end

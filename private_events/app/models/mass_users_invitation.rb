@@ -2,9 +2,13 @@ class MassUsersInvitation < ApplicationRecord
 	belongs_to :event
     before_validation :multiple_users, length: {in: 1..520}
 
+    validates :multiple_users, presence: true
+
 	validate :user_name_validity
 	validate :maximum_users
 	validate :cannot_invite_self
+
+	before_save false
 
 	private
 

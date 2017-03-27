@@ -1,18 +1,17 @@
 <% if no_attendees?(@event) %>
-
-  	<h2><%=@event.title%> has no attendees </h2>
-    <% if @event.creator == current_user %>
-     <%= render 'events/show/mass_invite_form' %>
-    <%end%>  
-
+ <h2><%=@event.title%> has no attendees </h2>
 <% else %>
-  
-  <h2>Attendees: </h2>
+<section class="user_info">
+  <h2> attendees </h2>
   <ul class="users">
-  	<% @attendees.each do |attendee| %>
   		<%= render 'shared/attendee' %>
-  	<%end%>
   </ul>
-  
+ </section>
   <%= will_paginate @attendees%>
 <%end%>
+
+<section class="micropost_form">    
+    <% if @event.creator == current_user %>
+      <%= render 'events/show/mass_invite_form' %>
+    <%end%>  
+</section> 

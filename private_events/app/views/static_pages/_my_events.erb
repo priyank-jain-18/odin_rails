@@ -1,9 +1,17 @@
-<% if @events_feed.any? %>
-  <h3>Events (<%= @current_user.events.count %>) </h3>
+<% if @created_events_feed.any? %>
+  <h3> Events you are currently hosting (<%= @created_events_feed.count %>) </h3>
   <ol class = "microposts">
-    <%= render @events_feed %>
+    <%= render @created_events_feed %>
   </ol>
-  <%= will_paginate @events_feed %>
-<% else %>
-	<h2> No events currently planned..</h2>
+  <%= will_paginate @created_events_feed %>
+<% end %>
+<% if @attending_events_feed.any? %>
+  <h3> Events that you will attend (<%= @attending_events_feed.count %>) </h3>
+  <ol class = "microposts">
+    <%= render @attending_events_feed %>
+  </ol>
+  <%= will_paginate @attending_events_feed %>
+<% end %>
+<% unless @created_events_feed.any? || @attending_events_feed.any? %>
+<h2> No events currently planned</h2>
 <% end %>

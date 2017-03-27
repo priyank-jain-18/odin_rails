@@ -1,0 +1,18 @@
+<% provide(:title, "Invitations to me") %>
+
+
+<% if @invitations.any? %>
+<h1>Invitations</h1>
+<ol class = "microposts">
+  <% @invitations.each do |invitation| %>
+  	<%= render invitation %>
+  <%end%>
+</ol>
+
+  <% will_paginate @invitations%>
+<% else %>
+<h2>You have no invitations...</h2>
+<%end%>
+
+
+

@@ -1,7 +1,7 @@
 module EventsHelper
 
-	def no_attendees?(event) #returns true if event has no attendees
-		return !event.attendees.any?
+	def no_attendees?(event) #returns true if event has no attendees		
+		!event.attendees.where(accepted: true).any?
 	end
 
 	def event_ended?(event) #returns true if event start date has passed 
@@ -13,7 +13,7 @@ module EventsHelper
 	end
 
 	def username_to_user(user)
-		User.find_by(username: user.username)
+		User.find_by(username: user)
 	end
 	
 end
