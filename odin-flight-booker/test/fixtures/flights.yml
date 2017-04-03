@@ -1,5 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+<% 3.times do |num|%>
+flight_one_<%=num%>:
   departed_from_id: 1
   arriving_to_id: 2
+  departure_date_time: <%= Time.zone.now + 2.hours %>
+<%end%>
+
+

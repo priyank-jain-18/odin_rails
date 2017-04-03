@@ -8,10 +8,16 @@ class Flight < ApplicationRecord
 
 	validate :arrival_should_be_before_departure
 
+	def formatted_departure_date
+		departure_date_time.strftime("%m/%d/%Y")
+	end
+
 private
 
 	def arrival_should_be_before_departure
-		if self.arrival_date_time && self.arrival_date_time < self.departure_date_time
+		if self.arrival_date_time && self.departure_date_time &&
+			 self.arrival_date_time < self.departure_date_time
+			 
 			errors.add(:arrival_date_time, "should not be greater than departure")
 		end
 	end

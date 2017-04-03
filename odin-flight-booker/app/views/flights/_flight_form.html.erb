@@ -1,0 +1,21 @@
+
+<%= form_tag("/flights", method: "get") do %>
+  
+  <%= label_tag(:departed_from) %>  
+  <%= select_tag((:departed_from),options_for_select(@flights_from_list), class: "form-control", 
+  	prompt: "select airport")%>
+
+  <%= label_tag(:arriving_to) %>  
+  <%= select_tag((:arriving_to),options_for_select(@flights_to_list), class: "form-control",
+  	prompt: "select airport")%>
+
+  <%= label_tag(:departure_date) %>
+  <%= select_tag((:departure_date),options_for_select(@departure_dates_to_list), class: "form-control", 
+  	prompt: "")%>
+
+  <%= label_tag(:number_of_passengers) %>
+  <%= select_tag((:number_of_passengers),options_for_select(@number_of_passengers),class: "form-control") %>
+
+  <%= submit_tag("search", class: "btn btn-primary") %>
+<% end %>
+
