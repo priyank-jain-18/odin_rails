@@ -1,8 +1,19 @@
 <%provide(:title, "Flight Booker") %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  	<h1>Flights</h1>
-  		<%= render 'flight_form' %>
-  </div>
+<h1>Book a ticket</h1>
+  <% if @custom_flights && @custom_flights.any? %> 
+  	<div class="col-md-6 col-md-offset-3">
+      <%= render 'flight_form' %>
+      <ol class="microposts"><li></li><li></li></ol>
+      <h1>Select a flight</h1>		
+      <%= render 'select_flights_form' %> 
+  	</div>
+  <% else %>  
+    <div class="col-md-6 col-md-offset-3">    
+  		<ol class="microposts">  			
+  			<%= render 'flight_form' %>
+  		</ol>
+  	</div>
+  <% end %>
 </div>
 	
