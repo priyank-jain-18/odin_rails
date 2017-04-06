@@ -1,0 +1,33 @@
+<h1>Succesfully booked ticket!</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<ol class="microposts">
+		<li>
+			booking id: <%= @booking.id %>
+		</li>
+		<li>			
+			flight id: <%= @flight.id %>
+		</li>
+		<li>
+			departure airport: <%= @flight.departed_from.name %>		
+		</li>
+		<li>
+			departure date: <%= @flight.departure_date_time.strftime("%Y/%m/%d  %H:%M" ) %>
+		</li>
+		<li>
+			arrival airport: <%= @flight.arriving_to.name %>
+		</li>
+		<li>
+			arrival date: <%=  @flight.arrival_date_time.strftime("%Y/%M/%d  %H:%M" ) %>			
+		</li>
+		<% if @booking.passengers.any? %>
+			<h2>Passengers(<%= @booking.passengers.count %>)</h2>
+			<% @booking.passengers.each_with_index do |passenger, index| %>	
+			<li>		
+				Name: <%= passenger.name %>
+			</li>
+			<%end%>
+		<%end%>
+	</ol>
+	</div>
+</div>

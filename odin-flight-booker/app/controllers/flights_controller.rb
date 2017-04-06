@@ -5,8 +5,6 @@ class FlightsController < ApplicationController
   	map_submmited_info_and_check_for_errors  
   end  
 
-
-
   private
 
   def initialize_form_objects

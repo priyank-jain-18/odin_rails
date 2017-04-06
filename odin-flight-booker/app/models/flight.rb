@@ -1,6 +1,7 @@
 class Flight < ApplicationRecord	
 	belongs_to :departed_from, class_name: "Airport"
 	belongs_to :arriving_to, class_name: "Airport"
+	has_many :bookings
 
 
 	validates :arrival_date_time, presence: true

@@ -1,4 +1,4 @@
-<%= form_tag( new_bookmark_path, method: "get") do %>  
+<%= form_tag( new_booking_path, method: "get") do %>  
   <%= label_tag("Select flight route") %>  
   <%= select_tag(:flight_id, options_for_select(@custom_flights), class: "form-control")%>
   <%= hidden_field_tag(:number_of_passengers, params[:flights][:number_of_passengers]) %>
