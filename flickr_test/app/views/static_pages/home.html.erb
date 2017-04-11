@@ -1,0 +1,12 @@
+<% if @photos.nil? %>
+<h2>Enter your user id </h2>
+	<%= render 'id_form' %>
+<% elsif @photos.present? %>
+	<% @photos.each do |photo| %>
+		<li>
+			<%= image_tag FlickRaw.url_b(photo) %>
+		</li>
+	<% end %>
+<% else %>
+	<h2> There is something wrong with your id </h2>
+<%end%>

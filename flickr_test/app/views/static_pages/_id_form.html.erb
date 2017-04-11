@@ -1,0 +1,6 @@
+<%= form_tag("/home", method: "get") do %>
+	<%= label_tag("Your flickr id")%>
+	<%= text_field_tag("my_flickr_id") %>
+
+	<%= submit_tag("search") %>
+<%end%>
