@@ -23,8 +23,8 @@ before_action :check_if_valid_flight, only: :create
 						number_of_passengers: number_of_passengers) and return
 				end						
 			end
+			mail_booking_passengers(booking)
 			redirect_to booking_path(booking)
-
 		else
 			redirect_to new_booking_path(flight_id: flight_id,
 				number_of_passengers: number_of_passengers) and return
@@ -56,6 +56,12 @@ before_action :check_if_valid_flight, only: :create
 	def check_if_valid_params
 		redirect_to root_url if Flight.find_by(id: params[:flight_id]).nil? ||
 			(params[:number_of_passengers].to_i > 4 || params[:number_of_passengers].to_i < 1)
+	end
+
+	def mail_booking_passengers(booking)
+		booking.passengers.each do |passenger| 
+			PassengerMailer.completed_booking(passenger).deliver_now
+		end
 	end
 
 end

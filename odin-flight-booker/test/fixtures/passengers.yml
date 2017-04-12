@@ -3,6 +3,7 @@
 one:
   email: "testering@gmail.com"
   name: "tester123"
+  booking_id: 1
 
 two:
   email: "testerer123@gmail.com"

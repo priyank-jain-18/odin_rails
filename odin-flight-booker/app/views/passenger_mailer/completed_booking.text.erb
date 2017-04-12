@@ -1,0 +1,8 @@
+Thanks for booking with us <%= @passenger.name %>
+
+booking id: <%= @booking.id %>
+flight id: <%= @flight.id %>
+departure airport: <%= @flight.departed_from.name %>
+departure date: <%= @flight.departure_date_time.strftime("%Y/%m/%d  %H:%M" ) %>
+arrival airport: <%= @flight.arriving_to.name %>
+arrival date: <%=  @flight.arrival_date_time.strftime("%Y/%M/%d  %H:%M" ) %>

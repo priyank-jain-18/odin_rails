@@ -3,6 +3,7 @@ class FlightsController < ApplicationController
   def index   	
   	initialize_form_objects  
   	map_submmited_info_and_check_for_errors  
+    
   end  
 
   private
